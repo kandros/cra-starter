@@ -4,7 +4,10 @@ module.exports = override(
     '@emotion/babel-preset-css-prop',
     {
       sourceMap: true,
-      labelFormat: '[dirname]--[local]',
+      labelFormat:
+        process.env.NODE_ENV === 'production'
+          ? undefined
+          : '[dirname]--[filename]--[local]',
       autoLabel: process.env.NODE_ENV !== 'production',
     },
   ])
