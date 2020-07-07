@@ -5,6 +5,10 @@ import styled from '@emotion/styled'
 const Test: React.FC = ({ children }) => (
   <div css={{ color: 'red' }}>{children}</div>
 )
+const EmotionCssPropWorksWithAnyClassName: React.FC<{ className?: string }> = ({
+  children,
+  className,
+}) => <div className={className}>{children}</div>
 
 const Nav: React.FC = styled.nav({
   width: 500,
@@ -26,7 +30,9 @@ function App() {
             <Test>Home</Test>
           </Route>
           <Route path="/one">
-            <Test>One</Test>
+            <EmotionCssPropWorksWithAnyClassName css={{ color: 'green' }}>
+              One
+            </EmotionCssPropWorksWithAnyClassName>
           </Route>
           <Route path="/two">
             <Test>Two</Test>
